@@ -40,24 +40,16 @@ TARGET_NO_BOOTLOADER := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 TW_INCLUDE_CRYPTO := true
 
+# Extra flags
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := \
-    earlycon=msm_geni_serial,0xA90000 \
-    androidboot.hardware=qcom \
-    msm_rtb.filter=0x237 \
-    ehci-hcd.park=3 \
-    lpm_levels.sleep_disabled=1 \
-    service_locator.enable=1 \
-    androidboot.configfs=true \
-    androidboot.usbcontroller=a600000.dwc3 \
-    swiotlb=1 \
-    loop.max_part=7 \
-    androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xA90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 swiotlb=4096 loop.max_part=7 buildvariant=userdebug
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
