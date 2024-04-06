@@ -56,6 +56,7 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.usbcontroller=a600000.dwc3 \
     swiotlb=1 \
     loop.max_part=7 \
+    ramoops_memreserve=4M \
     androidboot.selinux=permissive \
     androidboot.init_fatal_reboot_target=system
 BOARD_KERNEL_IMAGE_NAME := Image
